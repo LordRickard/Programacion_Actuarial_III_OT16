@@ -1,0 +1,73 @@
+---
+title: "Tarea 1"
+author: "Arturo Ramírez"
+date: "29 de agosto de 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Detalle de calificaciones por semestre. (Kardex)
+
+**1.  #Otoño 2014**
+
+**Materia/Calificación**
+
+    +Programación actuarial I | 8.0
+    
+    +Conceptos de cálculo     | 6.0 
+    
+    +Matemáticas básicas      | 6.0
+    
+    +Problemas de mat. Básicas| 6.0
+
+**2.  #Primavera 2015**
+
+*Materia/Calificación
+
+    +Teoria del interés I     | 7.0
+
+    +Microeconomía            | 6.0   
+
+    +Teoría de ecuaciones     | 6.0
+
+**3.  #Otoño 2015**
+
+**Materia/Calificación**
+
+    +Macroeconomía            | 7.0
+
+    +Formación Humana         | 9.0     
+
+    +Cálculo diferencial      | 9.0
+
+    +Teoría de ecuaciones     | 9.0
+    
+**4.  #Primavera 2016**
+
+**Materia/Calificación**
+
+    +Programación actuarial II| 7.0
+    
+    +Sistema financiero       | 9.0  
+    
+    +Cálculo integral         | 6.0
+
+**5.  #Periodo Actual (Otoño 2016)**
+
+**Materia/Calificación**
+
+    +Programación actuarial III | 
+    
+    +Derivados financieros      |     
+      
+    +Finanzas corporativas      | 
+    
+    +Cálculo integral           | 
+    
+    +Álgebra Lineal             |
+
+
+
