@@ -143,5 +143,49 @@ dput(airquality)
 dput(airquality, file="airquality.R")
 
 
+url(www.google.com)
+url("www.google.com")
 
+#r read only, readLines=ver las x primeras lineas
+con <- url("http://www.fcfm.buap.mx/","r")
+x <- readLines(con,7)
+x
+#writeLines toma un vector de caracteres y escribe c/elemento en una linea a la vez en 
+#un archivo de texto
+
+# [ extrae un obj de la misma clase al original
+#[[ Extrae un elemento de una lista o data frame, extrae solo un elemento
+# $ se usa para extraer elementos de una lista o data frame por nombre
+
+#Con restricción x[x>"b"] "x tales que x son > que b"
+
+#Ejemplo
+x <- c("a","b","c","c","d","e")
+x
+#extraemos elementos
+x[1]
+#extraemos una secuencia
+x[1:4]
+#con restricción
+x[x>"b"]
+#Para obtener un vector logico
+u <- x == "c"
+u
+x[u]
+
+#creamos una lista
+x <- list(foo=1:4, bar=.6)
+#extraemos el 1er elem
+#es una secuencia
+x[1]
+#Extrae la lista entera
+
+#extraemos el 1er elem de nuevo
+x[[1]]
+#extrae el ELEMENTO de la lista
+
+x$bar
+x[["bar"]]
+x["bar"]
+#es lo mismo
 
