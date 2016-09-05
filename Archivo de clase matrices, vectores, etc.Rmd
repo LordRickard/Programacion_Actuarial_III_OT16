@@ -67,10 +67,13 @@ is.nan(x)
 
 #Data frames
 
-x <- data.frame(Erick=1:4, Lori=c(T,T,F,F))
+x <- data.frame(Erick=1:4, Lori=c(T,T,F,F),Jarl=c(1+1i,1i,2+3i,3+4i))
 row.names(x) <-c("Primero","Segundo","Tercero","Cuarto")
 x
-nrow(x)
+
+table(x)
+
+  nrow(x)
 ncol(x)
 attributes(x)
 
@@ -103,9 +106,41 @@ m
 #lectura de datos
 #setwd("~/GitHub/Programacion_Actuarial_III_OT16") para cambiar el working directory
 
+setwd("~/GitHub/Programacion_Actuarial_III_OT16")
+
 data <-read.csv("Datos_S&P.csv")
-data <-read.table("Datos_S&P.csv",T,",")
+data <-read.table("Datos_S&P.csv",T,",",nrows = 100,skip=5)
+args(read.table)
 data
+
+#01/09/2016
+
+as.logical("nacho")
+
+#apply (lista) maply(Matriz) sapply(simplificada)
+
+#sapply aplica la funcion class a todo data
+clases <- sapply(data,class)
+data <-read.table("Datos_S&P.csv",T,",",colClasses = clases)
+clases
+
+#Para guardar info, dput y dget (uso)
+
+y <- data.frame(a=1,b="a")
+dput(y)
+dput(y,file="y.R")
+nueva.y <- dget("y.R")
+y
+nueva.y
+
+x <- "Programación actuarial III"
+y <- data.frame(a=1,b="a")
+dump(c("x","y"), file="data.R") #Comillas para seleccionar el objeto, no el valor
+rm(x,y) #remove
+source("data.R") #mandas a llamar al objeto
+
+dput(airquality)
+dput(airquality, file="airquality.R")
 
 
 
