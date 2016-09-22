@@ -1,4 +1,4 @@
-#Estructuras de control
+ #Estructuras de control
 #If, else, for, while, repeat, break, Next, return.
 
 if (<condición>){  ## Instruccions} else if {  # mas instrucciones} else {  #MAS condiciones}
@@ -110,5 +110,66 @@ w <- c(w,z)
 }
 m10
 m2
+
+#Clase del 19/09
+
+#Repeat/pag 41 pdf
+
+for(i in 1:100){
+  if(i<=20){
+    next
+  }
+  print(i)
+}
+#omite los primeros 20 
+
+#Creación de funciones
+suma2 <- function(x,y){
+   x+y
+}
+
+mayor10 <- function(x){
+  x[x>10]
+}
+
+mayor10(runif(100,5,15))
+#Genera 100 numeros aleatorios entre 5 y 15 y los evalua en mayor10
+
+mayorque <- function(x,n){
+  x[x>n]
+}
+
+
+promedioCol <- function(x, quitar.NA=TRUE) {
+  nc <- ncol(x)
+  medias <- vector("numeric",nc)
+  for(i in 1:nc){
+    medias[i] <- mean(x[,i], na.rm = quitar.NA)
+  }
+  medias
+}
+
+#mean es para promedio/ na.rm quita valores faltantes (si T)
+
+#Evaluación perezosa (Se evalua una expresion "b" solo hasta que se le llame)
+
+f <- function(a,b){
+  a^2
+}
+
+f <- function(a,b){
+  print(a)
+  print(b)
+}
+
+#Hace todo lo que pueda hasta que haya error 
+
+myplot <- function(x,y,type="l",...){
+  plot(x,y,type=type)
+}
+
+
+
+
 
 
