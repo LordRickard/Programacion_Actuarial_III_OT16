@@ -1,26 +1,18 @@
-completos<-function(directorio,id=1:332){
-  j<-vector("numeric")
-  n<- vector("numeric")
-  x <- vector("numeric")
-  suma <- 0
-  
-  for (i in id){ 
-    
-    if ((i>=1) && (i<10)){ 
-      x <- paste("00",i,".csv", sep="") } 
-    else { 
-      if (i>=10 && i<100){ 
-        x <- paste("0",i,".csv", sep="") } 
-      else { 
-        x <- paste(i,".csv", sep="") } 
-    }
-    y<-read.csv(x)
-    completos<-complete.cases(y)
-    j<-completos[completos==TRUE]
-    z<-length(j)
-    n<-c(n,z)
+
+
+completos <- function(directorio, id = 1:332){
+  #setwd(directorio)
+  nobs <- vector("numeric", length(id))
+  m<-1
+  for (c in id){
+    id1<-formatC(c,width = 3 ,flag = "0")
+    readen <- read.csv(paste(id1, ".csv",sep=""), header=T)
+    z <- (readen$sulfate)
+    w <- (readen$nitrate)
+    mydata <- data.frame(z, w)
+    nobs[m] <- nrow(mydata[complete.cases(mydata),])
+    m<-m+1
   }
-  resultado <- data.frame(id=id,nobs=n)
-  resultado
+  data.frame(id=id,nobs=nobs)
 }
-completos("specdata")
+completos("specdata",id=30:25)

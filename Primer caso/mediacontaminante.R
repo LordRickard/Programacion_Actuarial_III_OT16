@@ -1,30 +1,24 @@
-#Caso 1.
 
-
-mediacontaminante = function(directorio,contaminante,id=1:332){ 
-  
-  x <- vector("numeric")
-  suma <- 0
-  
-  for (i in id){ 
+mediacontaminante <- function(directorio, contaminante, id = 1:332){
+  suma <- numeric()
+  for (c in id){
     
-    if (i<10){ 
-      x <- paste("00",i,".csv", sep="") } 
-    else { 
-      if (i>=10 && i<100){ 
-        x <- paste("0",i,".csv", sep="") } 
-      else { 
-        x <- paste(i,".csv", sep="") } 
-    }
+    id1 <- formatC(c,width = 3 ,flag = "0")
+    readen <- read.csv(paste(id1, ".csv",sep=""),header = T)
     
-    y <- read.csv(x)
-    z <- c(y[,contaminante])
-    medias <- mean(z,na.rm=TRUE)
-    suma <- suma + medias
-  } 
-  prom <- suma/length(id)
-  prom
+    if (contaminante == "sulfate"){
+      
+      #suma <- c(suma,readen[[sulfate]])
+      suma <- c(suma,readen$sulfate)
+    } else if (contaminante == "nitrate"){
+      
+      #suma <- c(suma,readen[[nitrate]])
+      suma <- c(suma,readen$nitrate)
+    } else {
+      paste("El contaminante",contaminante,"no existe.")
+    } 
+    
+  }
+  promedio <- mean(suma, na.rm = T)
+  promedio
 }
-
-
-mediacontaminante("specdata","sulfate",1:2 )

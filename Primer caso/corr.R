@@ -1,28 +1,23 @@
-getwd()
-setwd("~/GitHub/Programacion_Actuarial_III/specdata")
-
-
-corr <- function(directorio, horizonte= 0){
-  x <- vector("numeric")
-  t <- vector("numeric")
+corr <- function(directorio, horizonte=0){
+  #setwd(directorio)
   
-  for (i in 1:332){
+  correlaciones <- vector("numeric",0)
+  m <- 1
+  for (c in 1:332){
     
-    datos<-formatC(i,width = 3 ,flag = "0")
-    numar <- read.csv(paste(datos, ".csv",sep=""), header=T)
-    casosc <- complete.cases(numar)
+    id1<-formatC(c,width = 3 ,flag = "0")
+    readen <- read.csv(paste(id1, ".csv",sep=""),header = T)
+    mydata <- data.frame(readen$sulfate,readen$nitrate)
+    completo <- mydata[complete.cases(mydata),]
+    l <- nrow(completo)
     
-    j <- numar[casosc,]
-    if (i >= horizonte) {
-      
-      x <-  cor(j[2],j[3])
-      y <-as.vector(x)
-      t <- c(t,y)
-      
+    if (l>horizonte){
+      length(correlaciones) <- length(correlaciones)+1
+      correlaciones[m] <- cor(completo[,1],completo[,2])
+      m <- m+1
     }
-    
   }
-  
-  t
+  correlaciones
 }
-corr("specdata",10)
+cor <- corr("specdata", 150)
+head(cor)
